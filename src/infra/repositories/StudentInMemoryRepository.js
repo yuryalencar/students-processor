@@ -24,6 +24,8 @@ class StudentInMemoryRepository extends IStudentRepository {
 	update(student) {
 		const { cpf } = student;
 		const index = this.students.findIndex(student => student.cpf === cpf);
+		if(index < 0) return
+
 		this.students.splice(index, 1);
 		this.students = [...this.students, student];
 	};
