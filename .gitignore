@@ -1,0 +1,8 @@
+# OS Files
+.DS_Store
+
+# Node JS Files
+node_modules
+
+# Enviroment Files
+.env
