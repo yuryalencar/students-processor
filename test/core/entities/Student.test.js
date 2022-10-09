@@ -171,3 +171,23 @@ describe('validateNumericField()', () => {
     expect(resultFunction).toThrow(/field not have only numbers/);
   });
 });
+
+describe('validateNormalizedCpf()', () => {
+  it('should be only numbers using only numbers', () => {
+    const field = "321123123123"
+    const resultFunction = () => Student.validateNormalizedCpf(field);
+    expect(resultFunction).not.toThrow();
+  });
+
+  it('should be only numbers using numbers and letters', () => {
+    const field = "321123123123asc"
+    const resultFunction = () => Student.validateNormalizedCpf(field);;
+    expect(resultFunction).toThrow(/Invalid format of the CPF/);
+  });
+
+  it('should be only numbers using numbers and dots/hyphens', () => {
+    const field = "321-123-123-123.23"
+    const resultFunction = () => Student.validateNormalizedCpf(field);;
+    expect(resultFunction).toThrow(/Invalid format of the CPF/);
+  });
+});

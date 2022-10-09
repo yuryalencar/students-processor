@@ -3,6 +3,7 @@ const IStudentRepository = require("../../core/repositories/IStudentRepository")
 class StudentInMemoryRepository extends IStudentRepository {
 
 	constructor() {
+		super();
 		this.students = [];
 	}
 

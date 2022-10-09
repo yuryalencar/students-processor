@@ -1,3 +1,5 @@
+import Student from "../entities/Student";
+
 class SearchStudent {
   constructor(studentsRepository) {
     this.studentsRepository = studentsRepository;
@@ -16,6 +18,7 @@ class SearchStudent {
    * @returns student if found and undefined if not found
    */
   async executeByCpf(cpf) {
+    Student.validateNormalizedCpf(cpf);
     const student = await this.studentsRepository.findByCpf(cpf);
     return student;
   }

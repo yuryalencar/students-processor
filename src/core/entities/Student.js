@@ -45,6 +45,13 @@ class Student {
     const normalized = withoutDots.split('-').join('');
     return normalized.trim();
   }
+
+  static validateNormalizedCpf(cpf) {
+    const hasDotsAndHyphens = new RegExp(/\-|\./).test(cpf);
+    const hasText = new RegExp("[A-Za-z]").test(cpf);
+
+    if (hasDotsAndHyphens || hasText) throw new Error('Invalid format of the CPF');
+  }
 }
 
 module.exports = Student;

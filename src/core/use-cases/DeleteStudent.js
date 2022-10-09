@@ -1,3 +1,5 @@
+import Student from "../entities/Student";
+
 class DeleteStudent {
   constructor(studentsRepository) {
     this.studentsRepository = studentsRepository;
@@ -7,6 +9,7 @@ class DeleteStudent {
    * @param {string} cpf 
    */
   async executeByCpf(cpf) {
+    Student.validateNormalizedCpf(cpf);
     await this.studentsRepository.destroyByCpf(cpf);
   }
 }
