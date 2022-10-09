@@ -14,3 +14,5 @@ class File {
 		this.details = details;
 	}
 }
+
+module.exports = File;

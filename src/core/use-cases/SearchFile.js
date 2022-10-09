@@ -7,7 +7,7 @@ class SearchFile {
    * @param {string} code provided in file upload
    * @returns file upload status
    */
-  async executebyCode(code) {
+  async executeByCode(code) {
     const file = await this.filesRepository.findByCode(code);
     return file;
   }

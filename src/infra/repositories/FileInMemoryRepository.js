@@ -3,6 +3,7 @@ const IFileRepository = require("../../core/repositories/IFileRepository");
 class FileInMemoryRepository extends IFileRepository {
 
 	constructor() {
+		super();
 		this.files = [];
 	}
 
