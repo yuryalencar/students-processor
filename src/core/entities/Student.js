@@ -52,6 +52,18 @@ class Student {
 
     if (hasDotsAndHyphens || hasText) throw new Error('Invalid format of the CPF');
   }
+
+  static validateStudent(object) {
+    if (typeof object !== 'object') throw new Error('Is not a Student Object');
+
+    const keys = Object.keys(object);
+    if (keys.length < 1) throw new Error('Is not a Student Object');
+    const validKeys = ['name', 'civilStatus', 'email', 'cpf', 'rg', 'birthDate', 'gender'];
+
+    for (const key of keys) {
+      if (!validKeys.includes(key)) throw new Error('Is not a Student Object');
+    }
+  }
 }
 
 module.exports = Student;

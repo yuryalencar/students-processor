@@ -138,7 +138,7 @@ describe('validateField()', () => {
   it('should be string using non-string types', () => {
     const booleanField = true
     const objectField = {}
-    
+
     const objectFunction = () => student.validateField(objectField, "field");
     const booleanFunction = () => student.validateField(booleanField, "field");
 
@@ -149,7 +149,7 @@ describe('validateField()', () => {
   it('shouldnt be empty string', () => {
     const emptyString = ""
     const emptyStringWithSpaces = "      "
-    
+
     const emptyStringFunction = () => student.validateField(emptyString, "field");
     const emptyStringWithSpacesFunction = () => student.validateField(emptyStringWithSpaces, "field");
 
@@ -189,5 +189,24 @@ describe('validateNormalizedCpf()', () => {
     const field = "321-123-123-123.23"
     const resultFunction = () => Student.validateNormalizedCpf(field);;
     expect(resultFunction).toThrow(/Invalid format of the CPF/);
+  });
+});
+
+describe('isStudent()', () => {
+  it('should be a valid Student using only object', () => {
+    const object = {}
+    const resultFunction = () => Student.validateStudent(object);
+    expect(resultFunction).toThrow(/Is not a Student Object/);
+  });
+
+  it('should be a valid Student instance', () => {
+    const resultFunction = () => Student.validateStudent(student);;
+    expect(resultFunction).not.toThrow();
+  });
+
+  it('should be a valid Student keys', () => {
+    const object = { name, civilStatus, email, cpf, rg, birthDate, gender }
+    const resultFunction = () => Student.validateStudent(object);
+    expect(resultFunction).not.toThrow();
   });
 });

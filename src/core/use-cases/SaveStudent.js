@@ -1,3 +1,5 @@
+const Student = require("../entities/Student");
+
 class SaveStudent {
   constructor(studentsRepository) {
     this.studentsRepository = studentsRepository;
@@ -7,6 +9,7 @@ class SaveStudent {
    * @param {Student} student
    */
   async execute(student) {
+    Student.validateStudent(student);
     await this.studentsRepository.save(student);
   }
 
@@ -14,7 +17,8 @@ class SaveStudent {
    * @param {[]} students all students to save
    */
   async executeBatch(students) {
-    for (const student in students) {
+    for (const student of students) {
+      Student.validateStudent(student);
       await this.studentsRepository.save(student);
     }
   }

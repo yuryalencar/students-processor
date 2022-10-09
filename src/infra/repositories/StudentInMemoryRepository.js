@@ -13,7 +13,7 @@ class StudentInMemoryRepository extends IStudentRepository {
 
 	save(student) {
 		const found = this.students.find(studentSaved => studentSaved.cpf === student.cpf);
-		if (!found) this.students.push(student);
+		if (!found) this.students = [...this.students, student];
 	}
 
 	destroyByCpf(cpf) {

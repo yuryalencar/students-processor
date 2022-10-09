@@ -43,9 +43,11 @@ describe('executeByCpf()', () => {
   });
 
   it('should be find student using invalid cpf format', () => {
-    expect(searchStudent.executeByCpf(cpf)).rejects.toThrow('Invalid format of the CPF');
+    return expect(searchStudent.executeByCpf(cpf)).rejects.toThrow('Invalid format of the CPF');
   });
+});
 
+describe('execute()', () => {
   it('should be find all students', async () => {
     const result = await searchStudent.execute();
     expect(result).toEqual([student]);

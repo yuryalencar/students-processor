@@ -44,6 +44,6 @@ describe('executeByCpf()', () => {
   });
 
   it('should remove a student of repository using invalid cpf format', () => {
-    expect(deleteStudent.executeByCpf(cpf)).rejects.toThrow('Invalid format of the CPF');
+    return expect(deleteStudent.executeByCpf(cpf)).rejects.toThrow('Invalid format of the CPF');
   });
 });
