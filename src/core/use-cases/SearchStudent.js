@@ -1,4 +1,4 @@
-import Student from "../entities/Student";
+const Student = require('../entities/Student');
 
 class SearchStudent {
   constructor(studentsRepository) {
