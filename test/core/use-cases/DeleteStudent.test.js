@@ -37,13 +37,12 @@ beforeEach(() => {
 });
 
 describe('executeByCpf()', () => {
-  it('should remove a student of repository using valid cpf format', () => {
-    deleteStudent.executeByCpf(cpfCleaned);
-    const result = repository.findByCpf(cpfCleaned);
-    expect(result).toBeUndefined();
+  it('should remove a student of repository using valid cpf format', async () => {
+    await deleteStudent.executeByCpf(cpfCleaned);
+    expect(deleteStudent.executeByCpf(cpfCleaned)).rejects.toThrow(/Student not found/);
   });
 
   it('should remove a student of repository using invalid cpf format', () => {
-    return expect(deleteStudent.executeByCpf(cpf)).rejects.toThrow('Invalid format of the CPF');
+    return expect(deleteStudent.executeByCpf(cpf)).rejects.toThrow(/Invalid format of the CPF/);
   });
 });

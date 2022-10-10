@@ -41,7 +41,7 @@ describe('execute()', () => {
     const { cpf } = student;
     const updatedStudent = new Student("UPDATED", "UPDATED", "UPDATED", cpf, "0000", "30/05/1997", "FEMALE");
     
-    await updateStudent.execute(updatedStudent);
+    await updateStudent.execute(cpf, updatedStudent);
     
     const students = await repository.findAll();
     const result = await repository.findByCpf(cpf);
@@ -53,13 +53,10 @@ describe('execute()', () => {
   it('should be not update a file using invalid cpf', async () => {
     const cpf = '00000000000'
     const updatedStudent = new Student("UPDATED", "UPDATED", "UPDATED", cpf, "0000", "30/05/1997", "FEMALE");
-    
-    await updateStudent.execute(updatedStudent);
-    
-    const students = await repository.findAll();
-    const result = await repository.findByCpf(cpf);
+        
+    expect(updateStudent.execute(cpf, updatedStudent)).rejects.toThrow(/Student not found/);
 
+    const students = await repository.findAll();
     expect(students).not.contain(updatedStudent);
-    expect(result).toBeUndefined();
   });
 });

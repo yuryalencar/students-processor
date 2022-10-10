@@ -1,4 +1,6 @@
 const {
+  getFileStatus,
+  consumeFileQueue,
   publishFileInQueue,
 } = require('../controllers/FileController');
 
@@ -15,7 +17,7 @@ const registerRoutes = app => {
 }
 
 const filesRoutes = app => {
-  app.get("/files/:code/status",() => console.log("getting file status"));
+  app.get("/files/:code/status", getFileStatus);
 }
 
 const studentsRoutes = app => {
@@ -26,4 +28,4 @@ const studentsRoutes = app => {
   app.delete("/students/:cpf", deleteStudent);
 }
 
-module.exports = { registerRoutes }
+module.exports = { registerRoutes, consumeFileQueue }

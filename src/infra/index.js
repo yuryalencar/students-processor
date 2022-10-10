@@ -1,6 +1,6 @@
 // Creating consumers
-const consumer = require('./queue/consumers');
 const { consumeFileQueue } = require('./controllers/FileController');
+const consumer = require('./queue/consumers');
 consumer.run('students.save', consumeFileQueue);
 
 // Starting server

@@ -6,6 +6,7 @@ node_modules
 
 # Enviroment Files
 .env
+.vscode
 
 # Coverage Test Files
 coverage

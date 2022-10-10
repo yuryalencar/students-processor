@@ -15,8 +15,7 @@ class FileInMemoryRepository extends IFileRepository {
 	}
 
 	update(file) {
-		const { code } = file;
-		const index = this.files.findIndex(student => student.code === code);		
+		const index = this.files.findIndex(student => student.code === file.code);
 		if(index < 0) return
 
 		this.files.splice(index, 1);
