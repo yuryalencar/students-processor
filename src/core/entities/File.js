@@ -7,11 +7,12 @@ class File {
 	 * @param {string} isProcessed
 	 * @param {string} details 
 	 */
-	constructor(code, filename, isProcessed, details) {
+	constructor(code, filename, isProcessed, data, details) {
 		this.code = code;
+		this.data = data;
+		this.details = details;
 		this.filename = filename;
 		this.isProcessed = isProcessed;
-		this.details = details;
 	}
 }
 

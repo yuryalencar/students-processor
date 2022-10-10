@@ -63,6 +63,10 @@ class Student {
     for (const key of keys) {
       if (!validKeys.includes(key)) throw new Error('Is not a Student Object');
     }
+
+    for (const key of validKeys) {
+      if (!keys.includes(key)) throw new Error('Is not a Student Object');
+    }
   }
 }
 

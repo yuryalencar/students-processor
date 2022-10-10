@@ -9,7 +9,11 @@ class StudentInMemoryRepository extends IStudentRepository {
 
 	findAll() { return this.students };
 
-	findByCpf(cpf) { return this.students.find(student => student.cpf === cpf) };
+	findByCpf(cpf) { 
+		const student = this.students.find(student => student.cpf === cpf);
+		if(!student) throw new Error("Student not found");
+		return student
+	};
 
 	save(student) {
 		const found = this.students.find(studentSaved => studentSaved.cpf === student.cpf);
@@ -18,13 +22,14 @@ class StudentInMemoryRepository extends IStudentRepository {
 
 	destroyByCpf(cpf) {
 		const index = this.students.findIndex(student => student.cpf === cpf);
+		if(index < 0) throw new Error("Student not found to delete");
+
 		this.students.splice(index, 1);
 	};
 
-	update(student) {
-		const { cpf } = student;
+	update(cpf, student) {
 		const index = this.students.findIndex(student => student.cpf === cpf);
-		if(index < 0) return
+		if(index < 0) throw new Error("Student not found to update");
 
 		this.students.splice(index, 1);
 		this.students = [...this.students, student];

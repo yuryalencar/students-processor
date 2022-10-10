@@ -23,11 +23,11 @@ const publish = async ({ exchange, queue, routingKey, message }) => {
   return isPublished;
 }
 
-// module.exports = publish;
+module.exports = publish;
 
-publish({
-  exchange: 'students.exchange',
-  queue: 'students.save',
-  routingKey: 'save_student',
-  message: { 'id': Math.floor(Math.random() * 1000), 'email': 'user@domail.com', name: 'firstname lastname' }
-}).then(result => console.log(result))
+// publish({
+//   exchange: 'students.exchange',
+//   queue: 'students.save',
+//   routingKey: 'save_student',
+//   message: { 'id': Math.floor(Math.random() * 1000), 'email': 'user@domail.com', name: 'firstname lastname' }
+// }).then(result => console.log(result))

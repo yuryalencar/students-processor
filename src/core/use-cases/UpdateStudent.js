@@ -6,8 +6,8 @@ class UpdateStudent {
   /**
    * @param {Student} student
    */
-  async execute(student) {
-    await this.studentsRepository.update(student);
+  async execute(cpf, student) {
+    await this.studentsRepository.update(cpf, student);
   }
 }
 

@@ -1,5 +1,6 @@
-const express = require("express");
 const cors = require("cors");
+const express = require("express");
+const fileUpload = require('express-fileupload');
 
 const { PORT } = require("../environment");
 const { registerRoutes } = require("./routes");
@@ -8,8 +9,9 @@ const messageServerStart = () => console.log(`Server Started in port ${PORT} ðŸš
 
 const run = () => {
   const app = express();
-  app.use(express.json());
   app.use(cors());
+  app.use(fileUpload());
+  app.use(express.json());
   registerRoutes(app);
   app.listen(PORT, messageServerStart);
 }
