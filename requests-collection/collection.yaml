@@ -1,13 +1,13 @@
 _type: export
 __export_format: 4
-__export_date: 2022-10-10T15:20:28.436Z
+__export_date: 2022-10-11T17:46:44.409Z
 __export_source: insomnia.desktop.app:v2022.6.0
 resources:
   - _id: req_42e5f22d954d4bb0a567d84a95d37ea8
     parentId: wrk_917c6eaab62e489085904df63acb7f17
-    modified: 1665372403663
+    modified: 1665456366657
     created: 1665372394529
-    url: http://localhost:5001/students
+    url: http://localhost:3000/students
     name: See All students
     description: ""
     method: GET
@@ -34,9 +34,9 @@ resources:
     _type: workspace
   - _id: req_9f10fd9c14704151844578c1ceb3ac5e
     parentId: wrk_917c6eaab62e489085904df63acb7f17
-    modified: 1665414233985
+    modified: 1665495474910
     created: 1665406021404
-    url: http://localhost:5001/files/dac27829-979c-453c-9b89-e8a487814a4f/status
+    url: http://localhost:3000/files/38397655-3e2e-4d1d-a10d-c9a3140edf94/status
     name: See file status
     description: ""
     method: GET
@@ -55,9 +55,9 @@ resources:
     _type: request
   - _id: req_12a7390eb2174907b63d237473bdfbd2
     parentId: wrk_917c6eaab62e489085904df63acb7f17
-    modified: 1665404840621
+    modified: 1665456384230
     created: 1665404802708
-    url: http://localhost:5001/students/73251050028
+    url: http://localhost:3000/students/73251050028
     name: Search student by CPF
     description: ""
     method: GET
@@ -76,9 +76,9 @@ resources:
     _type: request
   - _id: req_0f53fd733fd24c1795d4ae69df3557f8
     parentId: wrk_917c6eaab62e489085904df63acb7f17
-    modified: 1665415177883
+    modified: 1665494840747
     created: 1665372580455
-    url: http://localhost:5001/students/73251050028
+    url: http://localhost:3000/students/73251050028
     name: Update Student
     description: ""
     method: PUT
@@ -110,9 +110,9 @@ resources:
     _type: request
   - _id: req_87950006eb424258ba6f43cd21a54660
     parentId: wrk_917c6eaab62e489085904df63acb7f17
-    modified: 1665402436529
+    modified: 1665456391036
     created: 1665402260689
-    url: http://localhost:5001/students/73251050028
+    url: http://localhost:3000/students/73251050028
     name: Delete Student
     description: ""
     method: DELETE
@@ -135,9 +135,9 @@ resources:
     _type: request
   - _id: req_8bf7e53070314cb38753cd1d72df7c2c
     parentId: wrk_917c6eaab62e489085904df63acb7f17
-    modified: 1665411755125
+    modified: 1665493356244
     created: 1665364640520
-    url: http://localhost:5001/students
+    url: http://localhost:3000/students
     name: Batch File
     description: ""
     method: POST
@@ -151,6 +151,7 @@ resources:
           type: file
           multiline: null
           fileName: /Users/yuryalencar/Documents/personal/students-processor/requests-collection/planilha_alunos.xlsx
+          disabled: false
     parameters: []
     headers:
       - name: Content-Type
@@ -158,6 +159,39 @@ resources:
         id: pair_50955f4fb5854da89985df0b0dbb9bb2
     authentication: {}
     metaSortKey: -1665364640520
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_038bfce95b0742e88990435054452733
+    parentId: wrk_917c6eaab62e489085904df63acb7f17
+    modified: 1665491742775
+    created: 1665491248248
+    url: http://localhost:3000/students
+    name: Tests FIle
+    description: ""
+    method: POST
+    body:
+      mimeType: multipart/form-data
+      params:
+        - id: pair_8606d17844074d3cbe572ce2e293454a
+          name: students
+          value: ""
+          description: ""
+          type: file
+          multiline: null
+          fileName: /Users/yuryalencar/Documents/personal/students-processor/requests-collection/collection.yaml
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: multipart/form-data
+        id: pair_50955f4fb5854da89985df0b0dbb9bb2
+    authentication: {}
+    metaSortKey: -1664277510911
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
