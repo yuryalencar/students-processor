@@ -6,7 +6,7 @@ FROM base as production
 ENV NODE_ENV=production
 RUN npm ci
 COPY ./*.js ./
-CMD ["node", "index.js"]
+CMD ["node", "infra/index.js"]
 
 FROM base as dev
 RUN apk add --no-cache bash
@@ -16,4 +16,4 @@ RUN chmod +x /bin/wait-for-it.sh
 ENV NODE_ENV=development
 RUN npm install
 COPY ./*.js ./
-CMD ["node", "index.js"]
+CMD ["node", "infra/index.js"]

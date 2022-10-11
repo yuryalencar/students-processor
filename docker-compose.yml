@@ -12,22 +12,24 @@ services:
     networks:
         - rabbitmq_nodejs
   
-  # consumer:
-  #   container_name: consumer
-  #   build:
-  #     context: ./
-  #     target: dev
-  #   volumes:
-  #     - ./src:/src
-  #     - /src/node_modules
-  #   depends_on:
-  #     - "rabbitmq"
-  #   command: sh -c '/bin/wait-for-it.sh rabbitmq:5672 --timeout=30 -- node consumer.js'
-  #   environment:
-  #     NODE_ENV: production
-  #     AMQP_URL: amqp://guest:guest@rabbitmq:5672
-  #   networks:
-  #     - rabbitmq_nodejs
+  api_and_consumer:
+    container_name: api_and_consumer
+    build:
+      context: ./
+      target: dev
+    volumes:
+      - ./src:/src
+      - /src/node_modules
+    ports:
+      - 3000:3000
+    depends_on:
+      - "rabbitmq"
+    command: sh -c '/bin/wait-for-it.sh rabbitmq:5672 --timeout=30 -- node infra/index.js'
+    environment:
+      NODE_ENV: production
+      AMQP_URL: amqp://guest:guest@rabbitmq:5672
+    networks:
+      - rabbitmq_nodejs
 
 networks:
   rabbitmq_nodejs:
