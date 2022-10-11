@@ -18,13 +18,13 @@ services:
       context: ./
       target: dev
     volumes:
-      - ./src:/src
+      - .:/src
       - /src/node_modules
     ports:
       - 3000:3000
     depends_on:
       - "rabbitmq"
-    command: sh -c '/bin/wait-for-it.sh rabbitmq:5672 --timeout=30 -- node infra/index.js'
+    command: sh -c '/bin/wait-for-it.sh rabbitmq:5672 --timeout=30 -- node src/infra/index.js'
     environment:
       NODE_ENV: production
       AMQP_URL: amqp://guest:guest@rabbitmq:5672
