@@ -16,6 +16,8 @@ const repository = new StudentInMemoryRepository();
 const saveStudents = async (file) => {
   try {
     const sheet = await reader.readSheet(Buffer.from(file.data));
+    if(sheet.length < 1) throw new Error("Not found students");
+
     const students = sheet.map(student => {
       const [name, civilStatus, email, cpf, rg, birthDate, gender] = student;
       return new Student(name, civilStatus, email, cpf, rg, birthDate, gender);

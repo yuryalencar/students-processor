@@ -11,7 +11,7 @@ const publish = async ({ exchange, queue, routingKey, message }) => {
     await channel.assertQueue(queue, { durable: true });
     await channel.bindQueue(queue, exchange, routingKey);
 
-    await channel.publish(exchange, routingKey, Buffer.from(JSON.stringify(message)));
+    isPublished = await channel.publish(exchange, routingKey, Buffer.from(JSON.stringify(message)));
   } catch (error) {
     isPublished = false;
     console.error('Error in publishing message', error);
@@ -24,10 +24,3 @@ const publish = async ({ exchange, queue, routingKey, message }) => {
 }
 
 module.exports = publish;
-
-// publish({
-//   exchange: 'students.exchange',
-//   queue: 'students.save',
-//   routingKey: 'save_student',
-//   message: { 'id': Math.floor(Math.random() * 1000), 'email': 'user@domail.com', name: 'firstname lastname' }
-// }).then(result => console.log(result))
