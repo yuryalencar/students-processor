@@ -15,8 +15,8 @@ const repository = new StudentInMemoryRepository();
  */
 const saveStudents = async (file) => {
   try {
-    const studentArray = await reader.readSheet(Buffer.from(file.data));
-    const students = studentArray.map(student => {
+    const sheet = await reader.readSheet(Buffer.from(file.data));
+    const students = sheet.map(student => {
       const [name, civilStatus, email, cpf, rg, birthDate, gender] = student;
       return new Student(name, civilStatus, email, cpf, rg, birthDate, gender);
     })
