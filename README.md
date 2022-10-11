@@ -33,6 +33,8 @@ For configuration you require **Docker, Docker Compose, NodeJS**.
 docker-compose up
 ``` 
 
+----------
+
 > To run in your machine do you need install dependencies:
 
 ```
